@@ -1,5 +1,5 @@
 
-package com.example.haveibeenpawned;
+package com.example.haveibeenpawned.Model;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;

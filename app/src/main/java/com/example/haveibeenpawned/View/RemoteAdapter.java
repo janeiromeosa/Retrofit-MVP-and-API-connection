@@ -1,4 +1,4 @@
-package com.example.haveibeenpawned;
+package com.example.haveibeenpawned.View;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -6,6 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.haveibeenpawned.Model.HaveIBeenPawnedRepo;
+import com.example.haveibeenpawned.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +35,7 @@ public class RemoteAdapter extends RecyclerView.Adapter<RemoteAdapter.PawnedView
                 .inflate(R.layout.recycler_view, viewGroup, false);
         return new PawnedViewHolder(rootView);
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull PawnedViewHolder pawnedViewHolder, int position) {

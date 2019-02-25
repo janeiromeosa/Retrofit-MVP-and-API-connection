@@ -1,4 +1,7 @@
-package com.example.haveibeenpawned;
+package com.example.haveibeenpawned.Model;
+
+import com.example.haveibeenpawned.Presenter.PresenterContract;
+import com.example.haveibeenpawned.Presenter.PresenterData;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -13,6 +16,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RemoteDataSource implements DataSource {
 
+    private DataObserver listener;
+
+    public RemoteDataSource(DataObserver listener) {
+        this.listener = listener;
+    }
 
     @Override
     public void getDataForPawnedSite(String domain) {
@@ -33,12 +41,13 @@ public class RemoteDataSource implements DataSource {
         issService.getRepos(domain).enqueue(new Callback<List<HaveIBeenPawnedRepo>>() {
             @Override
             public void onResponse(Call<List<HaveIBeenPawnedRepo>> call, Response<List<HaveIBeenPawnedRepo>> response) {
-
+                HaveIBeenPawnedRepo haveIBeenPawnedRepo = (HaveIBeenPawnedRepo)response.body();
+                listener.onSuccess(haveIBeenPawnedRepo);
             }
 
             @Override
-            public void onFailure(Call<List<HaveIBeenPawnedRepo>> call, Throwable t) {
-
+            public void onFailure(Call<List<HaveIBeenPawnedRepo>> call, Throwable throwable) {
+                RemoteDataSource.this.listener.onFailure("An error occured");
             }
         });
 

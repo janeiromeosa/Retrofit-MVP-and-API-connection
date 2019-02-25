@@ -1,4 +1,4 @@
-package com.example.haveibeenpawned;
+package com.example.haveibeenpawned.Model;
 
 public class Constants {
     public final static String BASE_URL = "https://haveibeenpwned.com";
