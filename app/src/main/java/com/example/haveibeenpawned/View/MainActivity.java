@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity implements PresenterContract
     }
 
     @Override
-    public void showData(HaveIBeenPawnedRepo result) {
-        remoteAdapter.setData((List<HaveIBeenPawnedRepo>) result);
+    public void showData(List<HaveIBeenPawnedRepo> result) {
+        remoteAdapter.setData(result);
     }
 
     @Override

@@ -1,8 +1,5 @@
 package com.example.haveibeenpawned.Model;
 
-import com.example.haveibeenpawned.Presenter.PresenterContract;
-import com.example.haveibeenpawned.Presenter.PresenterData;
-
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -41,8 +38,8 @@ public class RemoteDataSource implements DataSource {
         issService.getRepos(domain).enqueue(new Callback<List<HaveIBeenPawnedRepo>>() {
             @Override
             public void onResponse(Call<List<HaveIBeenPawnedRepo>> call, Response<List<HaveIBeenPawnedRepo>> response) {
-                HaveIBeenPawnedRepo haveIBeenPawnedRepo = (HaveIBeenPawnedRepo)response.body();
-                listener.onSuccess(haveIBeenPawnedRepo);
+                List<HaveIBeenPawnedRepo> haveIBeenPawnedRepo = response.body();
+                listener.onSuccess((List<HaveIBeenPawnedRepo>) haveIBeenPawnedRepo);
             }
 
             @Override
